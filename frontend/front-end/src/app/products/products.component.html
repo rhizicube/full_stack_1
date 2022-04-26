@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="topElement">
+        <h3>Available Movies</h3>
+        <input type="text" placeholder="Search.." (keyup)="onSearch($event)">
+    </div>
+   
+    <div *ngIf="!filterData" style="display: flex;justify-content: flex-start; align-items: flex-start;">
+        <div class="row" *ngFor="let data of products" >
+            <div>
+                <img [src]="data.imgUrl" style="width: 200px; height: 160px; border-radius: 8px;">
+                <span>{{ data.name }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="filterData" style="display: flex;justify-content: flex-start; align-items: flex-start;">
+        <div class="row" *ngFor="let data of filteredData" >
+            <div>
+                <img [src]="data.imgUrl" style="width: 200px; height: 160px;">
+                <span>{{ data.name }}</span>
+            </div>
+        </div>
+    </div>
+    
+</div>
