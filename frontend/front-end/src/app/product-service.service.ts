@@ -1,23 +1,36 @@
-// import { Injectable } from '@angular/core';
-// import {  HttpClient, HttpHeaders } from '@angular/common/http';
-// const API_URL = 'http://localhost:5000/';
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ProductServiceService {
+import { Injectable } from '@angular/core';
+import {  HttpClient, HttpHeaders } from '@angular/common/http';
+const API_URL = 'http://localhost:8000/products/';
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductServiceService {
 
-//   constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { }
 
-//   getProductList(){
+  getProductList(){
    
-//     var headerObject = {
-//       "Content-Type":"application/json",
+    var headerObject = {
+      "Content-Type":"application/json",
       
-//     }
-//     const headers = new HttpHeaders(headerObject);    
-//    //console.log(headerObject);
-//    //console.log(requestObject);
-//    return this.http.get(API_URL+'products',{headers:headers});
+    }
+    const headers = new HttpHeaders(headerObject);    
+   //console.log(headerObject);
+   //console.log(requestObject);
+   return this.http.get(API_URL+'getAllProducts', { headers: headers });
 
-//   }
-// }
+  }
+
+  getSearchedData(name:any){
+    var headerObject = {
+      "Content-Type":"application/json",
+      
+    }
+    const headers = new HttpHeaders(headerObject);    
+   //console.log(headerObject);
+   //console.log(requestObject);
+   return this.http.get(API_URL+'getProductsByName/'+name, { headers: headers });
+
+
+  }
+}

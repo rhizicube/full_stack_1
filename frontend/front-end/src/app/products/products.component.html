@@ -1,7 +1,7 @@
 <div class="container">
     <div class="topElement">
         <h3>Available Movies</h3>
-        <input type="text" placeholder="Search.." (keyup)="onSearch($event)">
+        <input type="text" placeholder="Search.." (keyup)="onBackendSearch($event)">
     </div>
    
     <div *ngIf="!filterData" style="display: flex;justify-content: flex-start; align-items: flex-start;">
