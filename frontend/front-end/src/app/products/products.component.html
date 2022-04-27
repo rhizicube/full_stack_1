@@ -1,6 +1,7 @@
 <div class="container">
     <div class="topElement">
         <h3>Available Movies</h3>
+        <h3 *ngIf="loading">Data Loading....</h3>
         <input type="text" placeholder="Search.." (keyup)="onBackendSearch($event)">
     </div>
    
@@ -21,5 +22,6 @@
             </div>
         </div>
     </div>
-    
+    <h4 *ngIf="error">A error accured!!</h4>
+    <h4 *ngIf="noDataFound">No Data!!</h4>
 </div>

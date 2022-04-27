@@ -44,10 +44,19 @@ exports.getAllProducts = function (req, res, next) {
     console.log(name);
    let a = productsModel.findAll({where:{name: {[Op.substring]: req.params.name}}}).then(result => {
       console.log("Hii",result);
-      res.setHeader('Content-Type', 'application/json');
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.status(200).send({ "success":true, data: result  });
-      res.end();
+      if(result.length){
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.status(200).send({ "success":true, data: result  });
+        res.end();
+      }
+      else{
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.status(200).send({ "success":true, data: "No Data Found"});
+        res.end();
+      }
+     
       //return;
       
     }).catch(err => {

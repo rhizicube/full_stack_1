@@ -8,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-
   filteredData: any;
   filterData: boolean = false;
   loading: boolean = true;
   isDataAvailable: boolean = false;
   error: boolean = false;
+  noDataFound: boolean = false;
   products: any;
 
   constructor(private service: ProductServiceService) {}
@@ -82,19 +82,31 @@ export class ProductsComponent implements OnInit {
   //     descriptio: 'Hollywood',
   //   },
   // ];
-  
+
   ngOnInit(): void {
     this.getAllData();
   }
-  
+
   getAllData() {
+    //this.loading = true;
     this.service.getProductList().subscribe((resp: any) => {
-      var respVal;
-      respVal = resp;
-      console.log(respVal.data);
-      this.products = respVal.data;
-      console.log(this.products);
-      return;
+      console.log(resp.data, resp.data.status, resp.code);
+      if (resp.data) {
+        this.loading = false;
+        this.noDataFound = false;
+        var respVal;
+        respVal = resp;
+        console.log(respVal.data);
+        this.products = respVal.data;
+        console.log(this.products);
+      } else {
+        this.loading = false;
+        this.error = true;
+      }
+      //return;
+      if (respVal.length == 0) {
+        this.noDataFound = true;
+      }
     });
   }
 
@@ -112,15 +124,13 @@ export class ProductsComponent implements OnInit {
             .toLowerCase()
             .includes(searchData.target.value.toLowerCase())
         ) {
-          console.log(val);
           found = true;
           this.filterData = true;
           //this.noDataFound = false;
 
           this.filteredData = [...this.filteredData, this.products[val]];
-          console.log(this.filteredData);
+
           for (let d of this.filteredData) {
-            console.log(d);
           }
         }
       }
@@ -138,9 +148,9 @@ export class ProductsComponent implements OnInit {
       this.service.getSearchedData(data).subscribe((resp: any) => {
         var respVal;
         respVal = resp;
-        console.log(respVal.data);
+
         this.filteredData = respVal.data;
-        console.log(this.filteredData);
+
         return;
       });
     }
@@ -149,6 +159,4 @@ export class ProductsComponent implements OnInit {
       //this.noDataFound = false;
     }
   }
-
-  
 }
