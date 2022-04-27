@@ -2,6 +2,9 @@ const express = require("express");
 const productsModel = require("../models/productModel");
 const con = require("../util/database");
 
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 exports.createProduct = function (req, res, next) {
   const name = req.body.name;
   const type = req.body.type;
@@ -24,12 +27,33 @@ exports.createProduct = function (req, res, next) {
 
 exports.getAllProducts = function (req, res, next) {
     productsModel.findAll().then(result => {
-      console.log(result);
-      res.send({ data: result });
+      //console.log(result);
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.status(200).send({ "success":true, data: result  });
+      res.end();
+      //return;
     }).catch(err => {
       console.log(err);
     });
-    
+   
+  };
+
+  exports.getProductsByName = function (req, res, next) {
+    let name = req.params.name;
+    console.log(name);
+   let a = productsModel.findAll({where:{name: {[Op.substring]: req.params.name}}}).then(result => {
+      console.log("Hii",result);
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.status(200).send({ "success":true, data: result  });
+      res.end();
+      //return;
+      
+    }).catch(err => {
+      console.log(err);
+    });
+   
   };
   
   exports.getProductById = function (req, res, next) {

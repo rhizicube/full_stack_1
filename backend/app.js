@@ -7,10 +7,11 @@ const app = express();
 //app.use(express.json());
 const productRouter = require("./routes/productRouter");
 const sequelize = require("./util/database");
-
+var cors = require('cors');
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use(bodyParser.json())
 app.use('/products', productRouter);
 
 app.use(function (req, res, next) {
@@ -22,7 +23,7 @@ app.use(function (req, res, next) {
     res.locals.error = req.app.get("env") === "development" ? err : {};
   
     res.status(err.status || 500);
-    res.render("error");
+    res.send("error");
   });
 
   sequelize.sync()
