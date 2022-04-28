@@ -1,0 +1,25 @@
+version: '2.2'
+services:
+  backendData:
+    image: backend
+    ports:
+      - "8000:8000"
+    networks:
+      - proxynet
+    hostname: pensive_cartwright
+    healthcheck:
+      test: ["CMD"]
+      timeout: 20s
+      retries: 10
+  frontendData:
+    image: frontend
+    ports:
+      - "4000:4000"
+    networks:
+      - proxynet
+    depends_on:
+      backendData:
+        condition: service_healthy
+networks:
+  proxynet:
+    driver: bridge

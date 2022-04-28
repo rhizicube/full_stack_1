@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {  HttpClient, HttpHeaders } from '@angular/common/http';
-const API_URL = 'http://localhost:8000/products/';
+const API_URL = 'http://0.0.0.0:8000/products/';
 @Injectable({
   providedIn: 'root'
 })
