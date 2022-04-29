@@ -26,14 +26,14 @@ app.use(function (req, res, next) {
     res.send("error");
   });
 
-  sequelize.sync()
-  .then((result) => {
-    // console.log(result);
-    app.listen(8000);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-  // app.listen(8000);
+  // sequelize.sync()
+  // .then((result) => {
+  //   // console.log(result);
+  //   app.listen(8000);
+  // })
+  // .catch((err) => {
+  //   console.log(err);
+  // });
+   app.listen(8000);
 
   module.exports = app;

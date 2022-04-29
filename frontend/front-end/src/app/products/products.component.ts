@@ -91,13 +91,13 @@ export class ProductsComponent implements OnInit {
     //this.loading = true;
     this.service.getProductList().subscribe((resp: any) => {
       console.log(resp.data, resp.data.status, resp.code);
-      if (resp.data) {
+      if (resp.data)  {
         this.loading = false;
         this.noDataFound = false;
         var respVal;
-        respVal = resp;
-        console.log(respVal.data);
-        this.products = respVal.data;
+        respVal = resp.data;
+        //console.log(respVal.length);
+        this.products = respVal;
         console.log(this.products);
       } else {
         this.loading = false;
