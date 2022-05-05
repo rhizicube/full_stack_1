@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <h1></h1>
+  
+    <button class="btn btn-outline-primary">Login</button>
+  
+    <div class="row" style="margin-top: 50px;">
+      <div >
+        <form [formGroup]="newUser">
+          <label for="firstName"> First-Name </label>
+          <input
+            class="form-control"
+            type="text"
+            id="firstName"
+            
+            formControlName="firstName"
+            required
+          />
+          <label for="lastName"> Last-Name </label>
+          <input
+            class="form-control"
+            type="text"
+            id="lastName"
+            
+            formControlName="lastName"
+            required
+          />
+          <label for="email"> E-mail </label>
+          <input
+            class="form-control"
+            type="email"
+            id="email"
+            
+            formControlName="email"
+            required
+          />
+          <label for="password"> Password </label>
+          <input
+            class="form-control"
+            type="password"
+            id="password"
+            
+            formControlName="password"
+            required
+          />
+        </form>
+
+        <button class="btn btn-outline-primary" (click)="createNewUser()" style="margin-top: 10px;">Register</button>
+      </div>
+      </div>
+      </div>
+      

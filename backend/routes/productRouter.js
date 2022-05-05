@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const controller = require('../controllers/productController')
+const controller = require('../controllers/productController');
+const userController = require('../controllers/userController');
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -14,4 +15,6 @@ router.get('/getProductsByName/:name', controller.getProductsByName);
 router.get('/getById/:name', controller.getProductById);
 // router.delete('/deleteuser/:id', controller.deleteData);
 // router.put('/updateuser/:id', controller.updateData);
+
+router.post('/createUser', userController.createUser);
 module.exports = router;

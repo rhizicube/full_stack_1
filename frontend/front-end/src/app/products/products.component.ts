@@ -17,72 +17,7 @@ export class ProductsComponent implements OnInit {
   products: any;
 
   constructor(private service: ProductServiceService) {}
-  // products = [
-  //   {
-  //     name: 'Harry',
-  //     type: 'Movie',
-  //     releaseDate: '2001-08-09',
-  //     imgUrl: 'https://i.ytimg.com/vi/dvtovlDe1NM/maxresdefault.jpg',
-  //     descriptio: 'Hollywood',
-  //   },
-  //   {
-  //     name: 'Rocky',
-  //     type: 'Movie',
-  //     releaseDate: '2001-08-09',
-  //     imgUrl: 'https://i.ytimg.com/vi/dvtovlDe1NM/maxresdefault.jpg',
-  //     descriptio: 'Hollywood',
-  //   },
-  //   {
-  //     name: 'Rockstar',
-  //     type: 'Movie',
-  //     releaseDate: '2001-08-09',
-  //     imgUrl: 'https://i.ytimg.com/vi/dvtovlDe1NM/maxresdefault.jpg',
-  //     descriptio: 'Hollywood',
-  //   },
-  //   {
-  //     name: 'Harraa',
-  //     type: 'Movie',
-  //     releaseDate: '2001-08-09',
-  //     imgUrl: 'https://i.ytimg.com/vi/dvtovlDe1NM/maxresdefault.jpg',
-  //     descriptio: 'Hollywood',
-  //   },
-  //   {
-  //     name: 'Billy',
-  //     type: 'Movie',
-  //     releaseDate: '2001-08-09',
-  //     imgUrl: 'https://i.ytimg.com/vi/dvtovlDe1NM/maxresdefault.jpg',
-  //     descriptio: 'Hollywood',
-  //   },
-  //   {
-  //     name: 'Billall',
-  //     type: 'Movie',
-  //     releaseDate: '2001-08-09',
-  //     imgUrl: 'https://i.ytimg.com/vi/dvtovlDe1NM/maxresdefault.jpg',
-  //     descriptio: 'Hollywood',
-  //   },
-  //   {
-  //     name: 'None',
-  //     type: 'Movie',
-  //     releaseDate: '2001-08-09',
-  //     imgUrl: 'https://i.ytimg.com/vi/dvtovlDe1NM/maxresdefault.jpg',
-  //     descriptio: 'Hollywood',
-  //   },
-  //   {
-  //     name: 'Orphan',
-  //     type: 'Movie',
-  //     releaseDate: '2001-08-09',
-  //     imgUrl: 'https://i.ytimg.com/vi/dvtovlDe1NM/maxresdefault.jpg',
-  //     descriptio: 'Hollywood',
-  //   },
-  //   {
-  //     name: 'Orphanage',
-  //     type: 'Movie',
-  //     releaseDate: '2001-08-09',
-  //     imgUrl: 'https://i.ytimg.com/vi/dvtovlDe1NM/maxresdefault.jpg',
-  //     descriptio: 'Hollywood',
-  //   },
-  // ];
-
+  
   ngOnInit(): void {
     this.getAllData();
   }

@@ -33,4 +33,22 @@ export class ProductServiceService {
 
 
   }
+
+  postUser(firstName:string, lastName: string, email: string, password: string){
+    console.log("hit", firstName, lastName, email, password);
+    const user = { firstName: firstName, lastName: lastName, email: email, password: password };
+
+    var headerObject = {
+      "Content-Type":"application/json",
+    }
+    
+    const headers = new HttpHeaders(headerObject);   
+    console.log(headerObject); 
+   //console.log(headerObject);
+   //console.log(requestObject);
+   return this.http.post(API_URL+'createUser',user, { headers: headers });
+
+
+  
+  }
 }
